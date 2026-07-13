@@ -5,9 +5,9 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { initializeUserBoard } from "../init-user-board";
 
-const mongooseInstance = await connectDB();
-const client = mongooseInstance.connection.getClient();
-const db = client.db()
+const mongooseInstance = await connectDB()
+const client = mongooseInstance.connection.getClient() as any;
+const db = client.db() as any;
 
 export const auth = betterAuth({
     database: mongodbAdapter(db, {
