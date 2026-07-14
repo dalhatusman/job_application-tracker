@@ -45,8 +45,10 @@ export default function SignUp() {
         router.push("/dashboard");
       }
     } catch (err) {
-      setError("An unexpected error occurred");
-      console.log("error is:", err);
+      console.error("SignIn error:", err);
+      setError(
+        err instanceof Error ? err.message : "An unexpected error occurred",
+      );
     } finally {
       setLoading(false);
     }
